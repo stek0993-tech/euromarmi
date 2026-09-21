@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import matVerde from "@/assets/mat-verde.jpg";
-import workDetail from "@/assets/work-detail.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
 import { ServicePage } from "@/components/ServicePage";
 
 export const Route = createFileRoute("/scale-complementi")({
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/scale-complementi")({
       titleItalic="e Complementi"
       intro="Scale interne, soglie, davanzali e complementi d'arredo lavorati pezzo per pezzo. Realizziamo gradini massicci, alzate sagomate, tavoli monolitici e piani di servizio in marmo, granito e pietre pregiate selezionate in cava."
       image={matVerde}
-      detail={workDetail}
+      detail={gallery3}
       features={[
         { t: "Scale Interne", d: "Gradini a sbalzo, scale a giorno con ringhiere su misura, alzate cieche o forate. Antiscivolo integrato a richiesta." },
         { t: "Soglie e Davanzali", d: "Sezioni gocciolatoio, bordi toro o bisellati, finiture lucide o anticate. Tagliate al millimetro." },
