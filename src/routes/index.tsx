@@ -97,7 +97,7 @@ function Index() {
           <img
             src={logoEuromarmi}
             alt="Euromarmi"
-            className="h-6 md:h-7 w-auto brightness-0 invert"
+            className="h-9 md:h-11 w-auto brightness-0 invert"
             loading="eager"
           />
         </Link>
