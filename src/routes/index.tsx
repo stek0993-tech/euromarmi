@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { MaterialsHall } from "@/components/MaterialsHall";
 import heroMarble from "@/assets/hero-marble.jpg";
 import workKitchen from "@/assets/work-kitchen.jpg";
 import workDetail from "@/assets/work-detail.jpg";
@@ -20,9 +21,17 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Euromarmi — Lavorazione Marmi e Gres Porcellanato" },
-      { name: "description", content: "Lavorazione artigianale di marmi, graniti e gres porcellanato per piani cucina, bagni e rivestimenti su misura. Vendita lastre e materiali pregiati." },
+      {
+        name: "description",
+        content:
+          "Lavorazione artigianale di marmi, graniti e gres porcellanato per piani cucina, bagni e rivestimenti su misura. Vendita lastre e materiali pregiati.",
+      },
       { property: "og:title", content: "Euromarmi — Marmi e Gres Porcellanato" },
-      { property: "og:description", content: "Superfici sartoriali in marmo, granito e gres porcellanato per architettura d'interni d'eccellenza." },
+      {
+        property: "og:description",
+        content:
+          "Superfici sartoriali in marmo, granito e gres porcellanato per architettura d'interni d'eccellenza.",
+      },
     ],
   }),
   component: Index,
@@ -93,17 +102,32 @@ function Index() {
           />
         </Link>
         <div className="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.2em] font-display font-medium">
-          <a href="#lavorazioni" className="hover:opacity-60 transition-opacity">Lavorazioni</a>
-          <a href="#materiali" className="hover:opacity-60 transition-opacity">Materiali</a>
-          <a href="#galleria" className="hover:opacity-60 transition-opacity">Galleria</a>
-          <a href="#partner" className="hover:opacity-60 transition-opacity">Partner</a>
-          <a href="#chi-siamo" className="hover:opacity-60 transition-opacity">Chi Siamo</a>
-          <a href="#contatti" className="hover:opacity-60 transition-opacity">Contatti</a>
+          <a href="#lavorazioni" className="hover:opacity-60 transition-opacity">
+            Lavorazioni
+          </a>
+          <a href="#materiali" className="hover:opacity-60 transition-opacity">
+            Materiali
+          </a>
+          <a href="#galleria" className="hover:opacity-60 transition-opacity">
+            Galleria
+          </a>
+          <a href="#partner" className="hover:opacity-60 transition-opacity">
+            Partner
+          </a>
+          <a href="#chi-siamo" className="hover:opacity-60 transition-opacity">
+            Chi Siamo
+          </a>
+          <a href="#contatti" className="hover:opacity-60 transition-opacity">
+            Contatti
+          </a>
         </div>
       </nav>
 
       {/* Hero */}
-      <section id="top" className="relative h-screen flex flex-col justify-center items-center px-6 pt-24 overflow-hidden">
+      <section
+        id="top"
+        className="relative h-screen flex flex-col justify-center items-center px-6 pt-24 overflow-hidden"
+      >
         <div className="absolute inset-0 z-0">
           <img
             src={heroMarble}
@@ -122,10 +146,10 @@ function Index() {
             <span className="italic font-body font-normal">Senza Tempo</span>
           </h1>
           <p className="text-white/90 text-lg md:text-xl max-w-xl mx-auto font-body italic">
-            Lavorazione artigianale di marmi, graniti e gres porcellanato per l'architettura d'interni d'eccellenza.
+            Lavorazione artigianale di marmi, graniti e gres porcellanato per l'architettura
+            d'interni d'eccellenza.
           </p>
         </div>
-
       </section>
 
       {/* Partners */}
@@ -137,7 +161,10 @@ function Index() {
             </span>
             <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter uppercase mt-4">
               Partner
-              <span className="italic font-body font-normal normal-case tracking-normal"> & clienti</span>
+              <span className="italic font-body font-normal normal-case tracking-normal">
+                {" "}
+                & clienti
+              </span>
             </h2>
             <p className="text-muted-foreground mt-6">
               Architetti, studi di interior design e imprese che scelgono la nostra manifattura.
@@ -168,15 +195,13 @@ function Index() {
               Trasformazione
             </h2>
             <p className="text-muted-foreground max-w-md mb-12">
-              Dalla lastra grezza al dettaglio millimetrico. Realizziamo superfici che definiscono lo spazio domestico con la forza della pietra naturale e l'innovazione del gres porcellanato.
+              Dalla lastra grezza al dettaglio millimetrico. Realizziamo superfici che definiscono
+              lo spazio domestico con la forza della pietra naturale e l'innovazione del gres
+              porcellanato.
             </p>
             <div className="space-y-4">
               {services.map((s) => (
-                <Link
-                  to={s.to}
-                  key={s.n}
-                  className="group block border-b border-border pb-4"
-                >
+                <Link to={s.to} key={s.n} className="group block border-b border-border pb-4">
                   <span className="text-xs text-accent font-display font-bold uppercase tracking-[0.2em]">
                     {s.n}
                   </span>
@@ -219,26 +244,7 @@ function Index() {
               Campionario 2026
             </span>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10">
-            {materials.map((m) => (
-              <div key={m.name} className="group relative aspect-square bg-[#1a1a1a] overflow-hidden">
-                <img
-                  src={m.img}
-                  alt={`Texture ${m.name}`}
-                  width={512}
-                  height={512}
-                  loading="lazy"
-                  className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                />
-                <div className="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent">
-                  <span className="font-display font-bold uppercase text-[10px] tracking-[0.2em] opacity-70">
-                    {m.cat}
-                  </span>
-                  <h4 className="text-xl italic">{m.name}</h4>
-                </div>
-              </div>
-            ))}
-          </div>
+          <MaterialsHall items={materials} kicker="Campionario 2026 · 8 materiali" />
         </div>
       </section>
 
@@ -252,11 +258,14 @@ function Index() {
             <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter uppercase mt-4">
               Galleria
               <br />
-              <span className="italic font-body font-normal normal-case tracking-normal">dei lavori</span>
+              <span className="italic font-body font-normal normal-case tracking-normal">
+                dei lavori
+              </span>
             </h2>
           </div>
           <p className="text-muted-foreground max-w-sm">
-            Una selezione di realizzazioni firmate Euromarmi: cucine, bagni, scale e opere d'arte funeraria.
+            Una selezione di realizzazioni firmate Euromarmi: cucine, bagni, scale e opere d'arte
+            funeraria.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -285,7 +294,10 @@ function Index() {
       </section>
 
       {/* Chi Siamo */}
-      <section id="chi-siamo" className="border-t border-border py-24 md:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section
+        id="chi-siamo"
+        className="border-t border-border py-24 md:py-32 px-6 lg:px-12 max-w-7xl mx-auto"
+      >
         <div className="grid md:grid-cols-12 gap-12 items-end">
           <div className="md:col-span-7">
             <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-display font-bold">
@@ -294,17 +306,28 @@ function Index() {
             <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter uppercase mt-4">
               Trent'anni
               <br />
-              di <span className="italic font-body font-normal normal-case tracking-normal">passione per la pietra</span>.
+              di{" "}
+              <span className="italic font-body font-normal normal-case tracking-normal">
+                passione per la pietra
+              </span>
+              .
             </h2>
           </div>
           <p className="md:col-span-5 text-muted-foreground leading-relaxed">
-            Tutto è iniziato quasi trent'anni fa dalla passione di un giovane ragazzo per la lavorazione del marmo. Da allora, ogni lastra viene selezionata personalmente nelle cave e nei centri di produzione del gres in Italia, e ogni progetto viene seguito con la stessa cura del primo giorno: qualità impeccabile, precisione millimetrica e posa in opera curata fin nel minimo dettaglio.
+            Tutto è iniziato quasi trent'anni fa dalla passione di un giovane ragazzo per la
+            lavorazione del marmo. Da allora, ogni lastra viene selezionata personalmente nelle cave
+            e nei centri di produzione del gres in Italia, e ogni progetto viene seguito con la
+            stessa cura del primo giorno: qualità impeccabile, precisione millimetrica e posa in
+            opera curata fin nel minimo dettaglio.
           </p>
         </div>
       </section>
 
       {/* Contact */}
-      <section id="contatti" className="py-24 md:py-32 px-6 lg:px-12 bg-background border-t border-border">
+      <section
+        id="contatti"
+        className="py-24 md:py-32 px-6 lg:px-12 bg-background border-t border-border"
+      >
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24">
           <div>
             <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tighter uppercase mb-8">
@@ -327,7 +350,12 @@ function Index() {
               <div>
                 <p className="text-foreground font-bold mb-1">Contatti</p>
                 <p>+39 06 304 6839</p>
-              <a href="mailto:info@euromarmisantori.it" className="normal-case tracking-normal hover:text-foreground transition-colors">info@euromarmisantori.it</a>
+                <a
+                  href="mailto:info@euromarmisantori.it"
+                  className="normal-case tracking-normal hover:text-foreground transition-colors"
+                >
+                  info@euromarmisantori.it
+                </a>
               </div>
               <div>
                 <p className="text-foreground font-bold mb-1">Orari</p>
@@ -345,7 +373,13 @@ function Index() {
             <input type="hidden" name="_subject" value="Nuova richiesta dal sito Euromarmi" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
-            <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+            <input
+              type="text"
+              name="_honey"
+              style={{ display: "none" }}
+              tabIndex={-1}
+              autoComplete="off"
+            />
             <div className="grid md:grid-cols-2 gap-6">
               <input
                 type="text"
@@ -392,9 +426,15 @@ function Index() {
             © 2026 Euromarmi · P.IVA 05568741002
           </div>
           <div className="flex gap-8 text-[10px] uppercase tracking-[0.2em] font-display text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Cookie</a>
-            <a href="#" className="hover:text-foreground transition-colors">Instagram</a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Privacy
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Cookie
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Instagram
+            </a>
           </div>
         </div>
       </footer>

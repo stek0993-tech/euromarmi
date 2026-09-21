@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-display: 'Inter', system-ui, sans-serif;
-  --font-body: 'Lora', Georgia, serif;
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Lora", Georgia, serif;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -146,5 +146,380 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+  }
+}
+
+/*
+ * Materials 3D showcase — a draggable, auto-drifting perspective carousel
+ * for the "Selezione Materiali" section. Layout is computed and applied
+ * imperatively by MaterialsHall.tsx; these rules cover the static shell,
+ * the depth/lighting treatment and the responsive sizing.
+ */
+.materials-hall {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(255, 255, 255, 0.06), transparent 42%),
+    radial-gradient(circle at 16% 30%, rgba(147, 131, 120, 0.16), transparent 38%),
+    linear-gradient(180deg, #232120 0%, #171514 58%, #0e0d0c 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 30px 80px rgba(0, 0, 0, 0.45);
+}
+.materials-hall::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 70%);
+}
+.materials-hall::after {
+  content: "";
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  bottom: -25%;
+  height: 54%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(147, 131, 120, 0.16),
+    rgba(60, 55, 50, 0.08) 42%,
+    transparent 68%
+  );
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.materials-hall-head {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 28px 28px 0;
+}
+.materials-hall-kicker {
+  font-family: var(--font-display);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+.materials-hall-active {
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-style: italic;
+  color: #fff;
+  font-size: clamp(22px, 2.6vw, 34px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  max-width: 620px;
+  min-height: 1.05em;
+}
+.materials-hall-active small {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+.materials-hall-counter {
+  font-family: var(--font-display);
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  white-space: nowrap;
+  padding-top: 4px;
+}
+
+.materials-hall-stage {
+  --hall-card-w: clamp(200px, 20vw, 280px);
+  --hall-card-h: clamp(280px, 26vw, 360px);
+  position: relative;
+  z-index: 2;
+  height: 440px;
+  margin-top: 8px;
+  perspective: 1450px;
+  perspective-origin: 50% 48%;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+}
+.materials-hall-stage.is-dragging {
+  cursor: grabbing;
+}
+.materials-hall-stage::before {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 48px;
+  height: 130px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transform: perspective(620px) rotateX(69deg) scaleX(1.18);
+  transform-origin: center top;
+  pointer-events: none;
+}
+.materials-hall-stage::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 110px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(14, 13, 12, 0.55) 45%,
+    rgba(14, 13, 12, 0.98)
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.materials-hall-item {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: var(--hall-card-w);
+  height: var(--hall-card-h);
+  margin-left: calc(var(--hall-card-w) / -2);
+  margin-top: calc(var(--hall-card-h) / -2);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  transform-style: preserve-3d;
+  transform-origin: center 58%;
+  will-change: transform, opacity, filter;
+  transition: filter 0.32s var(--ease-out-expo);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+.materials-hall-item:focus-visible .materials-hall-panel {
+  outline: 2px solid #fff;
+  outline-offset: 5px;
+}
+.materials-hall-panel {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+.materials-hall-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 20%),
+    linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.82) 100%);
+  pointer-events: none;
+}
+.materials-hall-panel::after {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  width: 44%;
+  height: 140%;
+  top: -20%;
+  left: -52%;
+  transform: skewX(-13deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  opacity: 0;
+  transition:
+    left 0.85s var(--ease-out-expo),
+    opacity 0.3s;
+  pointer-events: none;
+}
+.materials-hall-item.is-active .materials-hall-panel::after {
+  left: 112%;
+  opacity: 0.7;
+}
+.materials-hall-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition:
+    transform 0.65s var(--ease-out-expo),
+    filter 0.45s;
+  pointer-events: none;
+}
+.materials-hall-item.is-active .materials-hall-image {
+  transform: scale(1.075);
+}
+.materials-hall-item:not(.is-active) .materials-hall-image {
+  filter: saturate(0.82) brightness(0.82);
+}
+
+.materials-hall-topline {
+  position: absolute;
+  z-index: 5;
+  top: 13px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+.materials-hall-meta {
+  position: absolute;
+  z-index: 5;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+.materials-hall-cat {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.62);
+  font-weight: 700;
+}
+.materials-hall-name {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.05;
+  color: #fff;
+}
+
+.materials-hall-reflection {
+  position: absolute;
+  left: 1.5%;
+  right: 1.5%;
+  top: calc(100% + 8px);
+  height: 38%;
+  border-radius: 16px;
+  overflow: hidden;
+  opacity: 0.18;
+  transform: scaleY(-1) translateZ(-1px);
+  transform-origin: center top;
+  filter: blur(0.7px) saturate(0.7);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent 78%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent 78%);
+  pointer-events: none;
+}
+.materials-hall-reflection img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.materials-hall-controls {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  padding: 0 28px 26px;
+  margin-top: -6px;
+}
+.materials-hall-help {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+}
+.materials-hall-nav {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  backdrop-filter: blur(12px);
+  transition:
+    background 0.22s,
+    transform 0.22s var(--ease-out-expo),
+    box-shadow 0.22s;
+}
+.materials-hall-nav:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
+}
+.materials-hall-nav:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 1024px) {
+  .materials-hall {
+    min-height: 560px;
+  }
+  .materials-hall-stage {
+    --hall-card-w: clamp(190px, 30vw, 260px);
+    --hall-card-h: clamp(260px, 40vw, 340px);
+    height: 410px;
+  }
+}
+@media (max-width: 640px) {
+  .materials-hall-head {
+    padding: 20px 18px 0;
+  }
+  .materials-hall-active {
+    font-size: 20px;
+    max-width: 230px;
+  }
+  .materials-hall-stage {
+    --hall-card-w: min(66vw, 230px);
+    --hall-card-h: min(92vw, 320px);
+    height: 370px;
+    perspective: 1050px;
+  }
+  .materials-hall-controls {
+    padding: 0 18px 20px;
+  }
+  .materials-hall-help {
+    max-width: 170px;
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .materials-hall-item,
+  .materials-hall-image,
+  .materials-hall-panel::after {
+    transition: none !important;
   }
 }
