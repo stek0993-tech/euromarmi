@@ -91,27 +91,17 @@ function WhatsAppIcon({ className }: { className?: string }) {
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground font-body selection:bg-accent/20">
-      {/* Navigation — two overlapping fixed layers, not nested: mix-blend-mode
-          only blends correctly against the real page when it's set on the
-          element that is itself the fixed/stacking-context boundary. The
-          logo layer stays unblended (its real colors, always); the nav-links
-          layer blends to auto-contrast against whatever scrolls beneath it. */}
-      <nav className="contents">
-        <div className="fixed top-0 w-full z-50 px-6 lg:px-12 py-6 flex items-center pointer-events-none">
-          <Link
-            to="/"
-            aria-label="Euromarmi — home"
-            className="flex items-center pointer-events-auto"
-          >
-            <img
-              src={logoEuromarmi}
-              alt="Euromarmi"
-              className="h-14 md:h-20 w-auto"
-              loading="eager"
-            />
-          </Link>
-        </div>
-        <div className="hidden md:flex fixed top-0 right-0 z-50 px-6 lg:px-12 py-6 gap-10 text-[10px] uppercase tracking-[0.2em] font-display font-medium mix-blend-difference text-white">
+      {/* Navigation — plain opaque bar, logo left / sections right. */}
+      <nav className="fixed top-0 w-full z-50 px-6 lg:px-12 py-6 flex justify-between items-center bg-background/90 backdrop-blur-sm border-b border-border">
+        <Link to="/" aria-label="Euromarmi — home" className="flex items-center">
+          <img
+            src={logoEuromarmi}
+            alt="Euromarmi"
+            className="h-14 md:h-20 w-auto"
+            loading="eager"
+          />
+        </Link>
+        <div className="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.2em] font-display font-medium text-foreground">
           <a href="#lavorazioni" className="hover:opacity-60 transition-opacity">
             Lavorazioni
           </a>
@@ -166,15 +156,8 @@ function Index() {
       <section id="partner" className="py-24 md:py-32 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-display font-bold">
-              Con Noi
-            </span>
-            <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter uppercase mt-4">
-              Partner
-              <span className="italic font-body font-normal normal-case tracking-normal">
-                {" "}
-                & clienti
-              </span>
+            <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter uppercase">
+              Alcuni dei nostri partner
             </h2>
             <p className="text-muted-foreground mt-6">
               Architetti, studi di interior design e imprese che scelgono la nostra manifattura.
