@@ -1,18 +1,35 @@
 import { Link } from "@tanstack/react-router";
-import logoEuromarmi from "@/assets/euromarmi-logo.png.asset.json";
+import logoEuromarmi from "@/assets/euromarmi-logo.svg";
 
-export function ServicePage({ n, eyebrow, title, titleItalic, intro, image, detail, features }: {
-  n: string; eyebrow: string; title: string; titleItalic: string; intro: string;
-  image: string; detail?: string;
+export function ServicePage({
+  n,
+  eyebrow,
+  title,
+  titleItalic,
+  intro,
+  image,
+  detail,
+  features,
+}: {
+  n: string;
+  eyebrow: string;
+  title: string;
+  titleItalic: string;
+  intro: string;
+  image: string;
+  detail?: string;
   features: { t: string; d: string }[];
 }) {
   return (
     <div className="min-h-screen bg-background text-foreground font-body">
       <nav className="fixed top-0 w-full z-50 px-6 lg:px-12 py-8 flex justify-between items-end bg-background/80 backdrop-blur-sm border-b border-border">
         <Link to="/" aria-label="Euromarmi — home" className="flex items-center">
-          <img src={logoEuromarmi.url} alt="Euromarmi" className="h-6 md:h-7 w-auto" loading="eager" />
+          <img src={logoEuromarmi} alt="Euromarmi" className="h-6 md:h-7 w-auto" loading="eager" />
         </Link>
-        <Link to="/" className="text-[10px] uppercase tracking-[0.2em] font-display font-medium hover:opacity-60 transition-opacity">
+        <Link
+          to="/"
+          className="text-[10px] uppercase tracking-[0.2em] font-display font-medium hover:opacity-60 transition-opacity"
+        >
           ← Indietro
         </Link>
       </nav>
@@ -24,13 +41,22 @@ export function ServicePage({ n, eyebrow, title, titleItalic, intro, image, deta
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase mt-6 leading-[0.9]">
           {title}
           <br />
-          <span className="italic font-body font-normal normal-case tracking-normal">{titleItalic}</span>
+          <span className="italic font-body font-normal normal-case tracking-normal">
+            {titleItalic}
+          </span>
         </h1>
         <p className="text-muted-foreground max-w-2xl mt-10 text-lg leading-relaxed">{intro}</p>
       </section>
 
       <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-16 md:pb-24">
-        <img src={image} alt={`${title} ${titleItalic}`} loading="lazy" width={1600} height={900} className="w-full aspect-[16/9] object-cover" />
+        <img
+          src={image}
+          alt={`${title} ${titleItalic}`}
+          loading="lazy"
+          width={1600}
+          height={900}
+          className="w-full aspect-[16/9] object-cover"
+        />
       </section>
 
       <section className="py-16 md:py-24 px-6 lg:px-12 max-w-7xl mx-auto">
@@ -49,7 +75,14 @@ export function ServicePage({ n, eyebrow, title, titleItalic, intro, image, deta
 
       {detail && (
         <section className="px-6 lg:px-12 max-w-7xl mx-auto pb-24">
-          <img src={detail} alt="Dettaglio lavorazione" loading="lazy" width={1600} height={1200} className="w-full aspect-[4/3] object-cover" />
+          <img
+            src={detail}
+            alt="Dettaglio lavorazione"
+            loading="lazy"
+            width={1600}
+            height={1200}
+            className="w-full aspect-[4/3] object-cover"
+          />
         </section>
       )}
 
@@ -61,7 +94,11 @@ export function ServicePage({ n, eyebrow, title, titleItalic, intro, image, deta
           <p className="text-muted-foreground mb-10">
             Scrivici per una consulenza dedicata. Ti risponderemo con un preventivo personalizzato.
           </p>
-          <Link to="/" hash="contatti" className="inline-block px-8 py-4 bg-foreground text-background font-display text-[10px] uppercase tracking-[0.2em] hover:bg-accent transition-colors">
+          <Link
+            to="/"
+            hash="contatti"
+            className="inline-block px-8 py-4 bg-foreground text-background font-display text-[10px] uppercase tracking-[0.2em] hover:bg-accent transition-colors"
+          >
             Richiedi Preventivo
           </Link>
         </div>

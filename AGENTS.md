@@ -1,10 +1,14 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+# Euromarmi
+
+Standalone TanStack Start app (React 19 + Vite + Tailwind v4). No longer
+connected to any external site builder — a plain Vite/Nitro project that
+builds and runs on any Node-capable host.
+
+- `npm run dev` — local dev server (http://localhost:8080)
+- `npm run build` — production build (`nitro`'s `node-server` preset, output
+  in `.output/`)
+- `npm run start` — run the production build (`node .output/server/index.mjs`)
+- `npm run preview` — Vite's own preview server for a quick local check of a
+  build
+
+See `README.md` for deployment options.

@@ -3,7 +3,7 @@ import { MaterialsHall } from "@/components/MaterialsHall";
 import heroMarble from "@/assets/hero-marble.jpg";
 import workKitchen from "@/assets/work-kitchen.jpg";
 import workDetail from "@/assets/work-detail.jpg";
-import logoEuromarmi from "@/assets/euromarmi-logo.png.asset.json";
+import logoEuromarmi from "@/assets/euromarmi-logo.svg";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -95,7 +95,7 @@ function Index() {
       <nav className="fixed top-0 w-full z-50 mix-blend-difference px-6 lg:px-12 py-8 flex justify-between items-end text-white">
         <Link to="/" aria-label="Euromarmi — home" className="flex items-center">
           <img
-            src={logoEuromarmi.url}
+            src={logoEuromarmi}
             alt="Euromarmi"
             className="h-6 md:h-7 w-auto brightness-0 invert"
             loading="eager"
