@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logoEuromarmi from "@/assets/euromarmi-logo.png.asset.json";
+import { Logo } from "@/components/Logo";
 
 export function ServicePage({ n, eyebrow, title, titleItalic, intro, image, detail, features }: {
   n: string; eyebrow: string; title: string; titleItalic: string; intro: string;
@@ -10,7 +10,7 @@ export function ServicePage({ n, eyebrow, title, titleItalic, intro, image, deta
     <div className="min-h-screen bg-background text-foreground font-body">
       <nav className="fixed top-0 w-full z-50 px-6 lg:px-12 py-8 flex justify-between items-end bg-background/80 backdrop-blur-sm border-b border-border">
         <Link to="/" aria-label="Euromarmi — home" className="flex items-center">
-          <img src={logoEuromarmi.url} alt="Euromarmi" className="h-6 md:h-7 w-auto" loading="eager" />
+          <Logo className="h-6 md:h-7" />
         </Link>
         <Link to="/" className="text-[10px] uppercase tracking-[0.2em] font-display font-medium hover:opacity-60 transition-opacity">
           ← Indietro
