@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logoEuromarmi from "@/assets/euromarmi-logo.svg";
+import logoEuromarmi from "@/assets/euromarmi-logo.png";
 
 export function ServicePage({
   n,
