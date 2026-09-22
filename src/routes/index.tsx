@@ -341,9 +341,10 @@ function Index() {
           </div>
 
           <form
+            id="form-contatti"
             action="https://formsubmit.co/info@euromarmisantori.it"
             method="POST"
-            className="space-y-6"
+            className="space-y-6 scroll-mt-32"
           >
             <input type="hidden" name="_subject" value="Nuova richiesta dal sito Euromarmi" />
             <input type="hidden" name="_template" value="table" />
@@ -416,7 +417,7 @@ function Index() {
 
       {/* Floating contact button */}
       <a
-        href="#contatti"
+        href="#form-contatti"
         className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[60] bg-foreground text-background font-display text-[10px] uppercase tracking-[0.2em] px-6 py-4 shadow-2xl hover:bg-accent transition-colors"
       >
         Contattaci
