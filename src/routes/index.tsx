@@ -898,13 +898,10 @@ function Index() {
 
           <form
             id="form-contatti"
-            action="https://formsubmit.co/info@euromarmisantori.it"
+            action="contact.php"
             method="POST"
             className="space-y-6 scroll-mt-32"
           >
-            <input type="hidden" name="_subject" value="Nuova richiesta dal sito Euromarmi" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
             <input
               type="text"
               name="_honey"
