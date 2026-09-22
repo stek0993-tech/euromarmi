@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MaterialsHall } from "@/components/MaterialsHall";
 import heroAmbiente from "@/assets/hero-ambiente.jpg";
@@ -101,6 +102,15 @@ const gallery = [
   { img: gallery4, cat: "Arte Funeraria", name: "Monumento in marmo" },
   { img: workKitchen, cat: "Cucina", name: "Piano in pietra scura" },
   { img: workDetail, cat: "Dettaglio", name: "Giunzione millimetrica" },
+];
+
+const navSections = [
+  { href: "#lavorazioni", label: "Lavorazioni" },
+  { href: "#materiali", label: "Materiali" },
+  { href: "#chi-siamo", label: "Chi Siamo" },
+  { href: "#galleria", label: "Galleria" },
+  { href: "#partner", label: "Partner" },
+  { href: "#contatti", label: "Contatti" },
 ];
 
 const partners = [
@@ -600,9 +610,21 @@ const materials = [
 ];
 
 function Index() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
   return (
     <div className="min-h-screen bg-background text-foreground font-body selection:bg-accent/20">
-      {/* Navigation — plain opaque bar, logo left / sections right. */}
+      {/* Navigation — plain opaque bar, logo left / sections right (a
+          hamburger dropdown below the md breakpoint). */}
       <nav className="fixed top-0 w-full z-50 px-6 lg:px-12 py-3 md:py-4 flex justify-between items-center bg-background/90 backdrop-blur-sm border-b border-border">
         <Link to="/" aria-label="Euromarmi — home" className="flex items-center">
           <img
@@ -613,24 +635,58 @@ function Index() {
           />
         </Link>
         <div className="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.2em] font-display font-medium text-foreground">
-          <a href="#lavorazioni" className="hover:opacity-60 transition-opacity">
-            Lavorazioni
-          </a>
-          <a href="#materiali" className="hover:opacity-60 transition-opacity">
-            Materiali
-          </a>
-          <a href="#chi-siamo" className="hover:opacity-60 transition-opacity">
-            Chi Siamo
-          </a>
-          <a href="#galleria" className="hover:opacity-60 transition-opacity">
-            Galleria
-          </a>
-          <a href="#partner" className="hover:opacity-60 transition-opacity">
-            Partner
-          </a>
-          <a href="#contatti" className="hover:opacity-60 transition-opacity">
-            Contatti
-          </a>
+          {navSections.map((s) => (
+            <a key={s.href} href={s.href} className="hover:opacity-60 transition-opacity">
+              {s.label}
+            </a>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className="md:hidden -mr-2 flex h-11 w-11 items-center justify-center text-foreground"
+          aria-label={menuOpen ? "Chiudi il menù" : "Apri il menù"}
+          aria-expanded={menuOpen}
+          aria-controls="menu-mobile"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span className="relative block h-4 w-6" aria-hidden="true">
+            <span
+              className={`absolute left-0 block h-px w-6 bg-current transition-transform duration-300 ${
+                menuOpen ? "top-1/2 rotate-45" : "top-0"
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-1/2 block h-px w-6 bg-current transition-opacity duration-200 ${
+                menuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute left-0 block h-px w-6 bg-current transition-transform duration-300 ${
+                menuOpen ? "top-1/2 -rotate-45" : "top-full"
+              }`}
+            />
+          </span>
+        </button>
+
+        <div
+          id="menu-mobile"
+          hidden={!menuOpen}
+          className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg"
+        >
+          <ul className="flex flex-col py-2 text-[11px] uppercase tracking-[0.2em] font-display font-medium text-foreground">
+            {navSections.map((s) => (
+              <li key={s.href}>
+                <a
+                  href={s.href}
+                  className="block px-6 py-4 border-b border-border last:border-b-0 active:bg-muted"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </nav>
 
