@@ -24,7 +24,7 @@ export function ServicePage({
     <div className="min-h-screen bg-background text-foreground font-body">
       <nav className="fixed top-0 w-full z-50 px-6 lg:px-12 py-6 flex justify-between items-center bg-background/80 backdrop-blur-sm border-b border-border">
         <Link to="/" aria-label="Euromarmi — home" className="flex items-center">
-          <img src={logoEuromarmi} alt="Euromarmi" className="h-7 md:h-9 w-auto" loading="eager" />
+          <img src={logoEuromarmi} alt="Euromarmi" className="h-12 md:h-16 w-auto" loading="eager" />
         </Link>
         <Link
           to="/"
