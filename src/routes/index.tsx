@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MaterialsHall } from "@/components/MaterialsHall";
-import heroMarble from "@/assets/hero-marble.jpg";
+import heroAmbiente from "@/assets/hero-ambiente.jpg";
 import workKitchen from "@/assets/work-kitchen.jpg";
 import workDetail from "@/assets/work-detail.jpg";
 import logoEuromarmi from "@/assets/euromarmi-logo.png";
@@ -122,13 +122,13 @@ function Index() {
       >
         <div className="absolute inset-0 z-0">
           <img
-            src={heroMarble}
-            alt="Lastra di marmo Calacatta in laboratorio"
-            width={1920}
-            height={1080}
+            src={heroAmbiente}
+            alt="Isola cucina in quarzite in un ambiente open space"
+            width={1809}
+            height={1056}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/35" />
+          <div className="absolute inset-0 bg-black/45" />
         </div>
 
         <div className="relative z-10 max-w-4xl text-center">
