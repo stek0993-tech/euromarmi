@@ -5,11 +5,11 @@ import tailwindcss from "@tailwindcss/vite";
 import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
-// Plain Vite config — no platform-specific wrapper. The app builds and runs
-// with `nitro`'s "node-server" preset, a portable Node.js server that works
-// on any host (a VPS, Docker, Render, Railway, Fly.io, ...): `npm run build`
-// then `node .output/server/index.mjs`.
-export default defineConfig(async ({ command }) => ({
+// Plain Vite config. All routes are static (no server functions, no dynamic
+// segments), so the app is fully prerendered to plain HTML/CSS/JS at build
+// time — output in dist/client/, deployable to any static/PHP host (e.g.
+// over FTP, alongside contact.php).
+export default defineConfig(() => ({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
@@ -37,10 +37,10 @@ export default defineConfig(async ({ command }) => ({
       // src/server.ts wraps the SSR handler to turn any swallowed 500 into a
       // rendered error page instead of a bare JSON body.
       server: { entry: "server" },
+      // Crawled from "/" and written to dist/client alongside the client
+      // assets.
+      prerender: { enabled: true, crawlLinks: true },
     }),
-    // Nitro only needs to run at build time; the dev server uses Vite's own
-    // middleware for SSR.
-    ...(command === "build" ? [(await import("nitro/vite")).nitro({ preset: "node-server" })] : []),
     viteReact(),
   ],
 }));

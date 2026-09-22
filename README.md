@@ -2,8 +2,11 @@
 
 Sito web Euromarmi - lavorazione marmi e gres porcellanato.
 
-Tecnologie: TanStack Start, React 19, Tailwind CSS v4. App standalone: nessuna
-dipendenza da piattaforme esterne, buildabile e ospitabile ovunque giri Node.js.
+Tecnologie: TanStack Start, React 19, Tailwind CSS v4. Tutte le route sono
+statiche (nessuna server function, nessun segmento dinamico), quindi il sito
+viene interamente prerenderizzato in HTML/CSS/JS in fase di build: nessun
+server Node.js richiesto in produzione, ospitabile su qualsiasi hosting
+statico/PHP (anche via semplice FTP).
 
 ## Sviluppo locale
 
@@ -15,23 +18,15 @@ npm run dev        # http://localhost:8080
 ## Build di produzione
 
 ```bash
-npm run build       # output in .output/ (preset Nitro "node-server")
-npm run start        # node .output/server/index.mjs
+npm run build       # prerender statico, output in dist/client/
+npm run preview     # anteprima locale della build (Vite preview)
 ```
-
-`npm run preview` avvia invece il server di anteprima nativo di Vite, utile
-per un controllo rapido della build senza passare da Nitro.
 
 ## Deploy
 
-La build produce un server Node.js portabile (`.output/server/index.mjs` +
-gli asset statici in `.output/public/`), quindi funziona su qualsiasi host
-che esegua Node — una VPS, un container Docker, Railway, Render, Fly.io, ecc.
-Bastano `npm ci && npm run build` seguito da `npm run start` (esponendo la
-porta scelta dall'host tramite la variabile d'ambiente `PORT`, che Nitro
-legge automaticamente).
-
-Per un hosting a edge/serverless specifico (Cloudflare Workers, Vercel,
-Netlify, ...) basta cambiare il preset Nitro in `vite.config.ts`
-(`nitro({ preset: "..." })`) — l'elenco dei preset disponibili è nella
-[documentazione di Nitro](https://nitro.build/deploy).
+`npm run build` genera in `dist/client/` un sito statico completo (una
+cartella con `index.html` per ogni route, più gli asset in `dist/client/assets/`).
+Basta caricare il contenuto di `dist/client/` sulla root del dominio
+sull'hosting (es. via FTP), insieme a `contact.php` (il form di contatto in
+`src/routes/index.tsx` invia i dati a `contact.php`, che va quindi copiato
+accanto a `index.html`).
