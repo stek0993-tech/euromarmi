@@ -4,18 +4,27 @@ import heroMarble from "@/assets/hero-marble.jpg";
 import workKitchen from "@/assets/work-kitchen.jpg";
 import workDetail from "@/assets/work-detail.jpg";
 import logoEuromarmi from "@/assets/euromarmi-logo.png";
+import logoXtone from "@/assets/partners/xtone.png";
+import logoCosentino from "@/assets/partners/cosentino.png";
+import logoLaminam from "@/assets/partners/laminam.png";
+import logoNeolith from "@/assets/partners/neolith.png";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 import gallery4 from "@/assets/gallery-4.jpg";
-import matCarrara from "@/assets/mat-carrara.jpg";
-import matGres from "@/assets/mat-gres.jpg";
-import matTravertino from "@/assets/mat-travertino.jpg";
-import matVerde from "@/assets/mat-verde.jpg";
-import matGresStatuario from "@/assets/mat-gres-statuario.jpg";
-import matGresCemento from "@/assets/mat-gres-cemento.jpg";
-import matGresLegno from "@/assets/mat-gres-legno.jpg";
-import matGresSahara from "@/assets/mat-gres-sahara.jpg";
+import xtAdamantina from "@/assets/xtone/adamantina.jpg";
+import xtAlpinus from "@/assets/xtone/alpinus.jpg";
+import xtAndromeda from "@/assets/xtone/andromeda.jpg";
+import xtBaobab from "@/assets/xtone/baobab.jpg";
+import xtBlackCosmic from "@/assets/xtone/black-cosmic.jpg";
+import xtBlueRoma from "@/assets/xtone/blue-roma.jpg";
+import xtCycloneBlack from "@/assets/xtone/cyclone-black.jpg";
+import xtMontBlanc from "@/assets/xtone/mont-blanc.jpg";
+import xtPangea from "@/assets/xtone/pangea.jpg";
+import xtRomaImperiale from "@/assets/xtone/roma-imperiale.jpg";
+import xtSelvaggioGreen from "@/assets/xtone/selvaggio-green.jpg";
+import xtTremorDark from "@/assets/xtone/tremor-dark.jpg";
+import xtViaLactea from "@/assets/xtone/via-lactea.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -54,25 +63,26 @@ const gallery = [
 ];
 
 const partners = [
-  "Studio Rossi Architetti",
-  "Marmi Carrara S.p.A.",
-  "Interior Design Roma",
-  "Costruzioni Bianchi",
-  "Cave del Verde Alpi",
-  "Atelier Milano",
-  "Impresa Edile Lazio",
-  "Gres Italia",
+  { name: "Cosentino", logo: logoCosentino },
+  { name: "XTONE", logo: logoXtone },
+  { name: "Laminam", logo: logoLaminam },
+  { name: "Neolith", logo: logoNeolith },
 ];
 
 const materials = [
-  { cat: "Marmo", name: "Bianco Carrara", img: matCarrara },
-  { cat: "Gres", name: "Ardesia Nera", img: matGres },
-  { cat: "Gres", name: "Statuario", img: matGresStatuario },
-  { cat: "Gres", name: "Sahara Noir", img: matGresSahara },
-  { cat: "Gres", name: "Cemento", img: matGresCemento },
-  { cat: "Gres", name: "Rovere Naturale", img: matGresLegno },
-  { cat: "Travertino", name: "Navona", img: matTravertino },
-  { cat: "Pregiati", name: "Verde Alpi", img: matVerde },
+  { cat: "Quarzite", name: "Adamantina", img: xtAdamantina },
+  { cat: "Granito", name: "Alpinus", img: xtAlpinus },
+  { cat: "Granito", name: "Andromeda", img: xtAndromeda },
+  { cat: "Granito", name: "Baobab", img: xtBaobab },
+  { cat: "Granito", name: "Black Cosmic", img: xtBlackCosmic },
+  { cat: "Quarzite", name: "Blue Roma", img: xtBlueRoma },
+  { cat: "Quarzite", name: "Cyclone Black", img: xtCycloneBlack },
+  { cat: "Quarzite", name: "Mont Blanc", img: xtMontBlanc },
+  { cat: "Granito", name: "Pangea", img: xtPangea },
+  { cat: "Quarzite", name: "Roma Imperiale", img: xtRomaImperiale },
+  { cat: "Granito", name: "Selvaggio Green", img: xtSelvaggioGreen },
+  { cat: "Quarzite", name: "Tremor Dark", img: xtTremorDark },
+  { cat: "Granito", name: "Via Lactea", img: xtViaLactea },
 ];
 
 function Index() {
@@ -134,6 +144,38 @@ function Index() {
         </div>
       </section>
 
+      {/* Official partner */}
+      <section id="xtone-partner" className="py-24 md:py-32 px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter uppercase text-center mb-10">
+            Partner Ufficiale
+          </h2>
+          <div className="bg-card border border-border rounded-xl px-8 py-16 md:px-16 md:py-20 text-center flex flex-col items-center">
+            <img
+              src={logoXtone}
+              alt="XTONE"
+              className="object-contain mb-10"
+              style={{ height: "clamp(40px, 5.2vw, 80px)", width: "auto" }}
+            />
+            <p className="font-body text-lg md:text-xl leading-relaxed text-foreground max-w-2xl">
+              Siamo Partner Ufficiale XTONE, il prestigioso brand di superfici di grande formato del
+              Gruppo Porcelanosa.
+              <br />
+              <br />
+              Una partnership che testimonia il livello tecnico e qualitativo delle nostre
+              lavorazioni e che ci consente di offrire competenza specializzata nella trasformazione
+              e lavorazione delle superfici XTONE.
+              <br />
+              <br />
+              <span className="italic">
+                Tecnologia, esperienza e qualità Made in Italy al servizio dei progetti più
+                ambiziosi.
+              </span>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Partners */}
       <section id="partner" className="py-24 md:py-32 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
@@ -148,12 +190,15 @@ function Index() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border">
             {partners.map((p) => (
               <div
-                key={p}
-                className="bg-background aspect-[3/2] flex items-center justify-center px-6 text-center hover:bg-muted/40 transition-colors"
+                key={p.name}
+                className="bg-background aspect-[3/2] flex items-center justify-center px-8 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all"
               >
-                <span className="font-display text-xs md:text-sm uppercase tracking-[0.15em] text-muted-foreground">
-                  {p}
-                </span>
+                <img
+                  src={p.logo}
+                  alt={p.name}
+                  loading="lazy"
+                  className="w-full max-w-[150px] h-auto object-contain"
+                />
               </div>
             ))}
           </div>
@@ -219,7 +264,7 @@ function Index() {
               Campionario 2026
             </span>
           </div>
-          <MaterialsHall items={materials} kicker="Campionario 2026 · 8 materiali" />
+          <MaterialsHall items={materials} kicker="XTONE Altissima · 13 materiali" />
         </div>
       </section>
 
