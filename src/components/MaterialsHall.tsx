@@ -17,7 +17,15 @@ export type MaterialHallItem = {
  * of vehicles. All layout math runs imperatively on refs (rAF loop) so the
  * 60fps transform updates never trigger a React re-render.
  */
-export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; kicker: string }) {
+export function MaterialsHall({
+  items,
+  kickerLogo,
+  kickerLogoAlt,
+}: {
+  items: MaterialHallItem[];
+  kickerLogo: string;
+  kickerLogoAlt: string;
+}) {
   const stageRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const activeLabelRef = useRef<HTMLDivElement>(null);
@@ -311,7 +319,12 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
     <div className="materials-hall" aria-label="Galleria 3D dei materiali">
       <div className="materials-hall-head">
         <div>
-          <div className="materials-hall-kicker">{kicker}</div>
+          <img
+            src={kickerLogo}
+            alt={kickerLogoAlt}
+            className="materials-hall-kicker-logo"
+            loading="lazy"
+          />
           <div ref={activeLabelRef} className="materials-hall-active" aria-live="polite" />
         </div>
         <div ref={counterRef} className="materials-hall-counter" />

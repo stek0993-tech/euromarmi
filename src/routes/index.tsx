@@ -365,7 +365,7 @@ function Index() {
               Campionario 2026
             </span>
           </div>
-          <MaterialsHall items={materials} kicker="XTONE Altissima · 13 materiali" />
+          <MaterialsHall items={materials} kickerLogo={logoXtone} kickerLogoAlt="XTONE" />
         </div>
       </section>
 
