@@ -25,6 +25,47 @@ import xtRomaImperiale from "@/assets/xtone/roma-imperiale.jpg";
 import xtSelvaggioGreen from "@/assets/xtone/selvaggio-green.jpg";
 import xtTremorDark from "@/assets/xtone/tremor-dark.jpg";
 import xtViaLactea from "@/assets/xtone/via-lactea.jpg";
+import xt2AgedClay from "@/assets/xtone2/aged-clay.jpg";
+import xt2AlpiVerde from "@/assets/xtone2/alpi-verde.jpg";
+import xt2AlpinusWhite from "@/assets/xtone2/alpinus-white.jpg";
+import xt2Amazonite from "@/assets/xtone2/amazonite.jpg";
+import xt2AndesBlue from "@/assets/xtone2/andes-blue.jpg";
+import xt2AntiqueGold from "@/assets/xtone2/antique-gold.jpg";
+import xt2ArsBeige from "@/assets/xtone2/ars-beige.jpg";
+import xt2AstanaGrey from "@/assets/xtone2/astana-grey.jpg";
+import xt2BottegaAcero from "@/assets/xtone2/bottega-acero.jpg";
+import xt2BottegaAntracita from "@/assets/xtone2/bottega-antracita.jpg";
+import xt2BottegaCaliza from "@/assets/xtone2/bottega-caliza.jpg";
+import xt2BrecciaImperiale from "@/assets/xtone2/breccia-imperiale.jpg";
+import xt2CalacattaAntico from "@/assets/xtone2/calacatta-antico.jpg";
+import xt2CalacattaGold from "@/assets/xtone2/calacatta-gold.jpg";
+import xt2CalacattaGreen from "@/assets/xtone2/calacatta-green.jpg";
+import xt2CalacattaViola from "@/assets/xtone2/calacatta-viola.jpg";
+import xt2Calatorao from "@/assets/xtone2/calatorao.jpg";
+import xt2Camouflage from "@/assets/xtone2/camouflage.jpg";
+import xt2CeppoCarabelas from "@/assets/xtone2/ceppo-carabelas.jpg";
+import xt2Ele from "@/assets/xtone2/ele.jpg";
+import xt2EwoodCamel from "@/assets/xtone2/ewood-camel.jpg";
+import xt2FioriDiBosco from "@/assets/xtone2/fiori-di-bosco.jpg";
+import xt2GlemWhite from "@/assets/xtone2/glem-white.jpg";
+import xt2InvisibleWhite from "@/assets/xtone2/invisible-white.jpg";
+import xt2LiemBlack from "@/assets/xtone2/liem-black.jpg";
+import xt2LiemDark from "@/assets/xtone2/liem-dark.jpg";
+import xt2MallorcaCaliza from "@/assets/xtone2/mallorca-caliza.jpg";
+import xt2MontrealWhite from "@/assets/xtone2/montreal-white.jpg";
+import xt2Navona from "@/assets/xtone2/navona.jpg";
+import xt2Neda from "@/assets/xtone2/neda.jpg";
+import xt2Negresco from "@/assets/xtone2/negresco.jpg";
+import xt2NyloNoir from "@/assets/xtone2/nylo-noir.jpg";
+import xt2OrobicoDark from "@/assets/xtone2/orobico-dark.jpg";
+import xt2PaonazzoBiondo from "@/assets/xtone2/paonazzo-biondo.jpg";
+import xt2PietraSicilia from "@/assets/xtone2/pietra-sicilia.jpg";
+import xt2PortLaurent from "@/assets/xtone2/port-laurent.jpg";
+import xt2StatuarioVenato from "@/assets/xtone2/statuario-venato.jpg";
+import xt2TadelaktSand from "@/assets/xtone2/tadelakt-sand.jpg";
+import xt2TajMahal from "@/assets/xtone2/taj-mahal.jpg";
+import xt2Tura from "@/assets/xtone2/tura.jpg";
+import xt2Vendome from "@/assets/xtone2/vendome.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -186,6 +227,375 @@ const materials = [
     variation: "Lieve",
     finishes: "Lucida · 100266527 · G1233",
     desc: "Sottigliezza, eleganza e delicatezza caratterizzano questo granito. Il nero intenso della superficie, attraversato da venature lineari dai colori tenui, crea spazi di grande personalità.",
+  },
+  {
+    cat: "Cemento",
+    name: "Aged Clay",
+    img: xt2AgedClay,
+    origin: "Naturale",
+    variation: "Effetto argilla",
+    finishes: "Media · uniforme",
+    desc: "Superficie effetto cemento dal tono caldo terracotta, con una texture materica vellutata che richiama l'argilla invecchiata. Ideale per ambienti contemporanei dal carattere caldo ed essenziale.",
+  },
+  {
+    cat: "Marmo",
+    name: "Alpi Verde",
+    img: xt2AlpiVerde,
+    origin: "Naturale",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Marmo verde intenso attraversato da marcate venature bianco-crema. Un materiale scenografico che porta nell'ambiente tutta la forza cromatica della pietra alpina.",
+  },
+  {
+    cat: "Quarzite",
+    name: "Alpinus White",
+    img: xt2AlpinusWhite,
+    origin: "Naturale",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Quarzite dal fondo chiaro screziato di beige, oro e verde, con inclusioni scure che ricordano i cristalli naturali della pietra. Un effetto grezzo e prezioso allo stesso tempo.",
+  },
+  {
+    cat: "Quarzite",
+    name: "Amazonite",
+    img: xt2Amazonite,
+    origin: "America del Sud",
+    variation: "Forte · retroilluminabile",
+    finishes: "Lucida",
+    desc: "Ispirata alla pietra semipreziosa da cui prende il nome, unisce toni verde smeraldo a venature dorate su fondo grigio. Un materiale di grande impatto per superfici di rappresentanza.",
+  },
+  {
+    cat: "Quarzite",
+    name: "Andes Blue",
+    img: xt2AndesBlue,
+    origin: "America del Sud",
+    variation: "Forte · retroilluminabile",
+    finishes: "Lucida",
+    desc: "Quarzite blu cobalto con vene dorate e bianche che si intrecciano sulla superficie, in un gioco cromatico che ricorda le pietre semipreziose delle Ande.",
+  },
+  {
+    cat: "Cemento",
+    name: "Antique Gold",
+    img: xt2AntiqueGold,
+    origin: "Naturale",
+    variation: "Leggera",
+    finishes: "Naturale",
+    desc: "Effetto cemento dal caldo tono bronzo-dorato, con superficie opaca e materica. Un colore caldo e avvolgente per ambienti che cercano calore senza rinunciare all'essenzialità.",
+  },
+  {
+    cat: "Pietra",
+    name: "Ars Beige",
+    img: xt2ArsBeige,
+    origin: "Europa",
+    variation: "Media",
+    finishes: "Naturale",
+    desc: "Pietra beige dalla texture morbida e uniforme, appena striata da sottili venature. Un tono neutro e versatile, perfetto per grandi superfici continue.",
+  },
+  {
+    cat: "Marmo",
+    name: "Astana Grey",
+    img: xt2AstanaGrey,
+    origin: "Europa",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Marmo grigio percorso da una vena scura e decisa che ne attraversa tutta la lastra, su un fondo screziato di toni caldi. Carattere deciso per progetti dal segno contemporaneo.",
+  },
+  {
+    cat: "Cemento",
+    name: "Bottega Acero",
+    img: xt2BottegaAcero,
+    origin: "Naturale",
+    variation: "Leggera",
+    finishes: "Naturale",
+    desc: "Effetto cemento chiaro dalla texture nebulosa e uniforme, nella collezione Bottega. Superficie discreta e contemporanea, pensata per ambienti minimal.",
+  },
+  {
+    cat: "Cemento",
+    name: "Bottega Antracita",
+    img: xt2BottegaAntracita,
+    origin: "Naturale",
+    variation: "Leggera",
+    finishes: "Naturale",
+    desc: "Effetto cemento antracite dalla superficie compatta e uniforme. Il tono scuro e materico della collezione Bottega per ambienti dal carattere deciso.",
+  },
+  {
+    cat: "Cemento",
+    name: "Bottega Caliza",
+    img: xt2BottegaCaliza,
+    origin: "Naturale",
+    variation: "Leggera",
+    finishes: "Naturale",
+    desc: "Effetto cemento nei toni caldi della calce, con superficie vellutata e uniforme. La versione più calda della collezione Bottega.",
+  },
+  {
+    cat: "Marmo",
+    name: "Breccia Imperiale",
+    img: xt2BrecciaImperiale,
+    origin: "Italia",
+    variation: "Media",
+    finishes: "Lucida",
+    desc: "Marmo chiaro con delicate venature grigie che disegnano un motivo brecciato elegante e discreto. Un classico senza tempo per ambienti raffinati.",
+  },
+  {
+    cat: "Marmo",
+    name: "Calacatta Antico",
+    img: xt2CalacattaAntico,
+    origin: "Italia",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Marmo bianco Calacatta con venature grigio-dorate ampie e decise, dal fondo leggermente anticato. L'eleganza classica del marmo di Carrara in chiave contemporanea.",
+  },
+  {
+    cat: "Marmo",
+    name: "Calacatta Gold",
+    img: xt2CalacattaGold,
+    origin: "Italia",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Marmo bianco venato da riflessi dorati che si diramano sulla superficie con andamento naturale. Il Calacatta più luminoso e prezioso, per interni di grande impatto.",
+  },
+  {
+    cat: "Marmo",
+    name: "Calacatta Green",
+    img: xt2CalacattaGreen,
+    origin: "Italia",
+    variation: "Media",
+    finishes: "Lucida",
+    desc: "Variante del Calacatta con un sottile sottotono verde e venature grigie sottili. Una lettura originale e contemporanea del marmo bianco classico.",
+  },
+  {
+    cat: "Marmo",
+    name: "Calacatta Viola",
+    img: xt2CalacattaViola,
+    origin: "Italia",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Marmo bianco attraversato da venature scure e riflessi violacei, dal disegno grafico e deciso. Una lastra scenografica per pareti e superfici a vista.",
+  },
+  {
+    cat: "Marmo",
+    name: "Calatorao",
+    img: xt2Calatorao,
+    origin: "Spagna",
+    variation: "Media",
+    finishes: "Lucida",
+    desc: "Marmo nero compatto solcato da sottili venature bianche lineari. Un nero elegante e discreto, ideale per top e rivestimenti di forte carattere.",
+  },
+  {
+    cat: "Pietra",
+    name: "Camouflage",
+    img: xt2Camouflage,
+    origin: "Naturale",
+    variation: "Media",
+    finishes: "Naturale",
+    desc: "Pietra dalla texture mossa e materica, con macchie chiare e scure che si fondono in un disegno organico e mimetico. Superficie di forte personalità per ambienti contemporanei.",
+  },
+  {
+    cat: "Pietra",
+    name: "Ceppo Carabelas",
+    img: xt2CeppoCarabelas,
+    origin: "Naturale",
+    variation: "Media",
+    finishes: "Naturale",
+    desc: "Pietra beige a grana fine, punteggiata da inclusioni minute che richiamano il tipico ceppo lombardo. Texture calda e naturale per pavimenti e rivestimenti.",
+  },
+  {
+    cat: "Legno",
+    name: "Ele",
+    img: xt2Ele,
+    origin: "Naturale",
+    variation: "Leggera",
+    finishes: "Effetto legno",
+    desc: "Gres effetto legno in un tono scuro ed elegante, con venatura verticale regolare. Il calore del legno naturale con le prestazioni della superficie in grande formato.",
+  },
+  {
+    cat: "Legno",
+    name: "Ewood Camel",
+    img: xt2EwoodCamel,
+    origin: "Naturale",
+    variation: "Leggera",
+    finishes: "Effetto legno",
+    desc: "Gres effetto legno dal tono miele-camel, con venatura naturale e calda. Perfetto per pavimenti continui dall'atmosfera accogliente.",
+  },
+  {
+    cat: "Marmo",
+    name: "Fiori di Bosco",
+    img: xt2FioriDiBosco,
+    origin: "Italia",
+    variation: "Media",
+    finishes: "Lucida",
+    desc: "Marmo bianco con delicate venature grigie diffuse, dal disegno fitto e naturale. Un classico rivisitato per superfici luminose e raffinate.",
+  },
+  {
+    cat: "Marmo",
+    name: "Glem White",
+    img: xt2GlemWhite,
+    origin: "Naturale",
+    variation: "Leggera",
+    finishes: "Lucida",
+    desc: "Marmo bianco dalla superficie quasi uniforme, appena attraversata da sottili venature grigio chiaro. Purezza ed essenzialità per grandi superfici luminose.",
+  },
+  {
+    cat: "Marmo",
+    name: "Invisible White",
+    img: xt2InvisibleWhite,
+    origin: "Naturale",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Marmo bianco percorso da decise venature grigio-antracite dal disegno grafico e contrastato. Un bianco di carattere, tutt'altro che invisibile.",
+  },
+  {
+    cat: "Marmo",
+    name: "Liem Black",
+    img: xt2LiemBlack,
+    origin: "Naturale",
+    variation: "Media",
+    finishes: "Lucida",
+    desc: "Marmo blu-nero profondo, solcato da sottili venature chiare che ne esaltano la profondità cromatica. Eleganza scura per ambienti sofisticati.",
+  },
+  {
+    cat: "Marmo",
+    name: "Liem Dark",
+    img: xt2LiemDark,
+    origin: "Naturale",
+    variation: "Media",
+    finishes: "Lucida",
+    desc: "Marmo grigio-antracite dalla superficie compatta, con venature chiare sottili appena percettibili. Un fondo scuro e avvolgente dal grande equilibrio cromatico.",
+  },
+  {
+    cat: "Pietra",
+    name: "Mallorca Caliza",
+    img: xt2MallorcaCaliza,
+    origin: "Spagna",
+    variation: "Leggera",
+    finishes: "Naturale",
+    desc: "Pietra calcarea chiara dalla texture nebulosa e uniforme, ispirata alle cave mediterranee di Mallorca. Un beige tenue e versatile.",
+  },
+  {
+    cat: "Marmo",
+    name: "Montreal White",
+    img: xt2MontrealWhite,
+    origin: "Naturale",
+    variation: "Leggera",
+    finishes: "Lucida",
+    desc: "Marmo bianco-grigio dalla superficie soffusa e uniforme, con vene sottilissime appena percettibili. Un fondo chiaro e discreto per ogni ambiente.",
+  },
+  {
+    cat: "Travertino",
+    name: "Navona",
+    img: xt2Navona,
+    origin: "Italia",
+    variation: "Media",
+    finishes: "Naturale",
+    desc: "Effetto travertino nei toni caldi del beige, con la classica striatura lineare della pietra romana. Calore e tradizione per ambienti dal fascino senza tempo.",
+  },
+  {
+    cat: "Legno",
+    name: "Neda",
+    img: xt2Neda,
+    origin: "Naturale",
+    variation: "Leggera",
+    finishes: "Effetto legno",
+    desc: "Gres effetto legno chiaro e naturale, con venatura fine e regolare. Un tono neutro e luminoso per pavimenti continui dal design contemporaneo.",
+  },
+  {
+    cat: "Marmo",
+    name: "Negresco",
+    img: xt2Negresco,
+    origin: "Naturale",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Marmo nero intenso attraversato da sottili venature dorate e bianche che si diramano sulla superficie. Un nero prezioso per interni di grande carattere.",
+  },
+  {
+    cat: "Marmo",
+    name: "Nylo Noir",
+    img: xt2NyloNoir,
+    origin: "Naturale",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Marmo nero profondo attraversato da nette venature ramate che disegnano un motivo grafico e deciso. Superficie scenografica per pareti e top di grande formato.",
+  },
+  {
+    cat: "Pietra",
+    name: "Orobico Dark",
+    img: xt2OrobicoDark,
+    origin: "Italia",
+    variation: "Forte",
+    finishes: "Naturale",
+    desc: "Pietra scura dal disegno brecciato, con vene calde che si intrecciano su un fondo grigio-bruno intenso. Il carattere alpino dell'Orobico in chiave contemporanea.",
+  },
+  {
+    cat: "Marmo",
+    name: "Paonazzo Biondo",
+    img: xt2PaonazzoBiondo,
+    origin: "Italia",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Marmo bianco con ampie venature dorate e nere dal disegno deciso e continuo, nella tradizione del Paonazzo apuano. Una lastra di forte impatto scenico.",
+  },
+  {
+    cat: "Pietra",
+    name: "Pietra Sicilia",
+    img: xt2PietraSicilia,
+    origin: "Italia",
+    variation: "Leggera",
+    finishes: "Naturale",
+    desc: "Pietra grigia a grana fine e superficie uniforme, ispirata alle cave siciliane. Texture calda e naturale per pavimenti e rivestimenti di grande formato.",
+  },
+  {
+    cat: "Marmo",
+    name: "Port Laurent",
+    img: xt2PortLaurent,
+    origin: "Francia",
+    variation: "Forte",
+    finishes: "Lucida",
+    desc: "Marmo nero con dense venature dorate che si intrecciano sulla superficie, ispirato ai celebri marmi neri francesi. Lusso ed eleganza per ambienti di rappresentanza.",
+  },
+  {
+    cat: "Marmo",
+    name: "Statuario Venato",
+    img: xt2StatuarioVenato,
+    origin: "Italia",
+    variation: "Media",
+    finishes: "Lucida",
+    desc: "Marmo bianco statuario con venature grigie morbide e continue, dal disegno naturale ed elegante. Il classico per eccellenza tra i marmi bianchi italiani.",
+  },
+  {
+    cat: "Pietra",
+    name: "Tadelakt Sand",
+    img: xt2TadelaktSand,
+    origin: "Naturale",
+    variation: "Leggera",
+    finishes: "Naturale",
+    desc: "Effetto tadelakt nei toni sabbia, con superficie vellutata e leggermente nuvolata. La calda essenzialità dell'intonaco marocchino in una lastra di grande formato.",
+  },
+  {
+    cat: "Marmo",
+    name: "Taj Mahal",
+    img: xt2TajMahal,
+    origin: "India",
+    variation: "Media",
+    finishes: "Lucida",
+    desc: "Marmo beige-crema dal fondo caldo e venature sottili, ispirato alla celebre quarzite indiana. Un tono avvolgente per ambienti eleganti e luminosi.",
+  },
+  {
+    cat: "Pietra",
+    name: "Tura",
+    img: xt2Tura,
+    origin: "Naturale",
+    variation: "Media",
+    finishes: "Naturale",
+    desc: "Pietra grigio-beige con una vena calda che ne attraversa la superficie, in un equilibrio naturale di toni chiari e caldi. Versatile per grandi ambienti continui.",
+  },
+  {
+    cat: "Marmo",
+    name: "Vendome",
+    img: xt2Vendome,
+    origin: "Francia",
+    variation: "Media",
+    finishes: "Lucida",
+    desc: "Marmo grigio-beige con venature dorate e morbide sfumature, ispirato all'eleganza discreta della pietra francese. Un tono raffinato per interni contemporanei.",
   },
 ];
 
