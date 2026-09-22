@@ -603,9 +603,14 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground font-body selection:bg-accent/20">
       {/* Navigation — plain opaque bar, logo left / sections right. */}
-      <nav className="fixed top-0 w-full z-50 px-6 lg:px-12 py-6 flex justify-between items-center bg-background/90 backdrop-blur-sm border-b border-border">
+      <nav className="fixed top-0 w-full z-50 px-6 lg:px-12 py-3 md:py-4 flex justify-between items-center bg-background/90 backdrop-blur-sm border-b border-border">
         <Link to="/" aria-label="Euromarmi — home" className="flex items-center">
-          <img src={logoEuromarmi} alt="Euromarmi" className="h-7 md:h-9 w-auto" loading="eager" />
+          <img
+            src={logoEuromarmi}
+            alt="Euromarmi"
+            className="h-12 md:h-16 w-auto"
+            loading="eager"
+          />
         </Link>
         <div className="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.2em] font-display font-medium text-foreground">
           <a href="#lavorazioni" className="hover:opacity-60 transition-opacity">
@@ -614,14 +619,14 @@ function Index() {
           <a href="#materiali" className="hover:opacity-60 transition-opacity">
             Materiali
           </a>
+          <a href="#chi-siamo" className="hover:opacity-60 transition-opacity">
+            Chi Siamo
+          </a>
           <a href="#galleria" className="hover:opacity-60 transition-opacity">
             Galleria
           </a>
           <a href="#partner" className="hover:opacity-60 transition-opacity">
             Partner
-          </a>
-          <a href="#chi-siamo" className="hover:opacity-60 transition-opacity">
-            Chi Siamo
           </a>
           <a href="#contatti" className="hover:opacity-60 transition-opacity">
             Contatti
@@ -779,8 +784,38 @@ function Index() {
         </div>
       </section>
 
+      {/* Chi Siamo */}
+      <section id="chi-siamo" className="py-24 md:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-12 gap-12 items-end">
+          <div className="md:col-span-7">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-display font-bold">
+              Chi Siamo
+            </span>
+            <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter uppercase mt-4">
+              Trent'anni
+              <br />
+              di{" "}
+              <span className="italic font-body font-normal normal-case tracking-normal">
+                passione per la pietra
+              </span>
+              .
+            </h2>
+          </div>
+          <p className="md:col-span-5 text-muted-foreground leading-relaxed">
+            Tutto è iniziato quasi trent'anni fa dalla passione di un giovane ragazzo per la
+            lavorazione del marmo. Da allora, ogni lastra viene selezionata personalmente nelle cave
+            e nei centri di produzione del gres in Italia, e ogni progetto viene seguito con la
+            stessa cura del primo giorno: qualità impeccabile, precisione millimetrica e posa in
+            opera curata fin nel minimo dettaglio.
+          </p>
+        </div>
+      </section>
+
       {/* Gallery */}
-      <section id="galleria" className="py-24 md:py-32 px-6 lg:px-12 max-w-7xl mx-auto">
+      <section
+        id="galleria"
+        className="border-t border-border py-24 md:py-32 px-6 lg:px-12 max-w-7xl mx-auto"
+      >
         <div className="flex flex-wrap gap-4 justify-between items-end mb-16">
           <div>
             <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-display font-bold">
@@ -821,36 +856,6 @@ function Index() {
               </figcaption>
             </figure>
           ))}
-        </div>
-      </section>
-
-      {/* Chi Siamo */}
-      <section
-        id="chi-siamo"
-        className="border-t border-border py-24 md:py-32 px-6 lg:px-12 max-w-7xl mx-auto"
-      >
-        <div className="grid md:grid-cols-12 gap-12 items-end">
-          <div className="md:col-span-7">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-display font-bold">
-              Chi Siamo
-            </span>
-            <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter uppercase mt-4">
-              Trent'anni
-              <br />
-              di{" "}
-              <span className="italic font-body font-normal normal-case tracking-normal">
-                passione per la pietra
-              </span>
-              .
-            </h2>
-          </div>
-          <p className="md:col-span-5 text-muted-foreground leading-relaxed">
-            Tutto è iniziato quasi trent'anni fa dalla passione di un giovane ragazzo per la
-            lavorazione del marmo. Da allora, ogni lastra viene selezionata personalmente nelle cave
-            e nei centri di produzione del gres in Italia, e ogni progetto viene seguito con la
-            stessa cura del primo giorno: qualità impeccabile, precisione millimetrica e posa in
-            opera curata fin nel minimo dettaglio.
-          </p>
         </div>
       </section>
 

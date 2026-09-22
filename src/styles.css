@@ -535,9 +535,6 @@
   background: rgba(10, 9, 8, 0.72);
   backdrop-filter: blur(10px);
 }
-.materials-sheet[hidden] {
-  display: none;
-}
 .materials-sheet-card {
   position: relative;
   display: grid;
@@ -639,6 +636,7 @@
   color: var(--color-foreground);
   font-size: 22px;
   line-height: 1;
+  cursor: pointer;
   transition:
     background 0.22s,
     transform 0.22s var(--ease-out-expo);
@@ -652,15 +650,57 @@
 }
 
 @media (max-width: 820px) {
+  /* Mobile: a compact, self-contained card instead of a near-fullscreen
+     panel — the sheet must never swallow the page. */
+  .materials-sheet {
+    padding: 16px 12px;
+  }
   .materials-sheet-card {
     grid-template-columns: 1fr;
-    grid-template-rows: 220px minmax(0, 1fr);
+    grid-template-rows: 150px minmax(0, 1fr);
+    width: min(440px, 100%);
+    max-height: min(560px, calc(100dvh - 32px));
+    border-radius: 14px;
+  }
+  .materials-sheet-media {
+    min-height: 0;
   }
   .materials-sheet-body {
-    padding: 28px 22px 32px;
+    padding: 20px 18px 24px;
+  }
+  .materials-sheet-name {
+    margin: 8px 0 12px;
+    font-size: 24px;
+  }
+  .materials-sheet-desc {
+    margin-bottom: 18px;
+    font-size: 14px;
+    line-height: 1.6;
   }
   .materials-sheet-specs {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+    margin-bottom: 20px;
+    padding-top: 16px;
+  }
+  .materials-sheet-specs dd {
+    font-size: 13px;
+  }
+  .materials-sheet-cta {
+    display: block;
+    padding: 13px 20px;
+    text-align: center;
+  }
+  /* The close control sits over the photo, so it needs its own contrast. */
+  .materials-sheet-close {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    background: rgba(10, 9, 8, 0.7);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #fff;
+    backdrop-filter: blur(6px);
   }
 }

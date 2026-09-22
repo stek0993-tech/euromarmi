@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 export type MaterialHallItem = {
   cat: string;
@@ -303,12 +304,17 @@ export function MaterialsHall({
     if (detail === null) return;
     pauseRef.current(600000);
     closeBtnRef.current?.focus();
+    // Lock the page behind the sheet: on mobile a scrolling background under
+    // an open modal makes the page feel impossible to navigate.
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setDetail(null);
     };
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previousOverflow;
       pauseRef.current(1500);
     };
   }, [detail]);
@@ -399,61 +405,66 @@ export function MaterialsHall({
         </div>
       </div>
 
-      <div
-        className="materials-sheet"
-        role="dialog"
-        aria-modal="true"
-        aria-label={current ? `Scheda materiale ${current.name}` : "Scheda materiale"}
-        hidden={current === null}
-        onClick={(e) => {
-          if (e.target === e.currentTarget) setDetail(null);
-        }}
-      >
-        <div className="materials-sheet-card">
-          <button
-            ref={closeBtnRef}
-            type="button"
-            className="materials-sheet-close"
-            aria-label="Chiudi la scheda"
-            onClick={() => setDetail(null)}
+      {current !== null &&
+        createPortal(
+          // Portalled to <body>: `.materials-hall` is an isolated stacking
+          // context, so an in-place sheet would render under the fixed navbar.
+          <div
+            className="materials-sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Scheda materiale ${current.name}`}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) setDetail(null);
+            }}
           >
-            ×
-          </button>
-          <div className="materials-sheet-media">
-            {current && <img src={current.img} alt={`Texture ${current.name}`} />}
-          </div>
-          <div className="materials-sheet-body">
-            <span className="materials-sheet-cat">{current?.cat}</span>
-            <h3 className="materials-sheet-name">{current?.name}</h3>
-            <p className="materials-sheet-desc">{current?.desc}</p>
-            <dl className="materials-sheet-specs">
-              <div>
-                <dt>Tipologia</dt>
-                <dd>{current?.cat}</dd>
+            <div className="materials-sheet-card">
+              <button
+                ref={closeBtnRef}
+                type="button"
+                className="materials-sheet-close"
+                aria-label="Chiudi la scheda"
+                onClick={() => setDetail(null)}
+              >
+                ×
+              </button>
+              <div className="materials-sheet-media">
+                <img src={current.img} alt={`Texture ${current.name}`} />
               </div>
-              <div>
-                <dt>Provenienza</dt>
-                <dd>{current?.origin}</dd>
+              <div className="materials-sheet-body">
+                <span className="materials-sheet-cat">{current.cat}</span>
+                <h3 className="materials-sheet-name">{current.name}</h3>
+                <p className="materials-sheet-desc">{current.desc}</p>
+                <dl className="materials-sheet-specs">
+                  <div>
+                    <dt>Tipologia</dt>
+                    <dd>{current.cat}</dd>
+                  </div>
+                  <div>
+                    <dt>Provenienza</dt>
+                    <dd>{current.origin}</dd>
+                  </div>
+                  <div>
+                    <dt>Variazione cromatica</dt>
+                    <dd>{current.variation}</dd>
+                  </div>
+                  <div>
+                    <dt>Finiture</dt>
+                    <dd>{current.finishes}</dd>
+                  </div>
+                </dl>
+                <a
+                  className="materials-sheet-cta"
+                  href="#form-contatti"
+                  onClick={() => setDetail(null)}
+                >
+                  Richiedi questo materiale
+                </a>
               </div>
-              <div>
-                <dt>Variazione cromatica</dt>
-                <dd>{current?.variation}</dd>
-              </div>
-              <div>
-                <dt>Finiture</dt>
-                <dd>{current?.finishes}</dd>
-              </div>
-            </dl>
-            <a
-              className="materials-sheet-cta"
-              href="#form-contatti"
-              onClick={() => setDetail(null)}
-            >
-              Richiedi questo materiale
-            </a>
-          </div>
-        </div>
-      </div>
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
