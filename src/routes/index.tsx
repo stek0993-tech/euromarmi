@@ -4,7 +4,6 @@ import heroMarble from "@/assets/hero-marble.jpg";
 import workKitchen from "@/assets/work-kitchen.jpg";
 import workDetail from "@/assets/work-detail.jpg";
 import logoEuromarmi from "@/assets/euromarmi-logo.png";
-import logoXtone from "@/assets/xtone-logo.png";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -158,12 +157,6 @@ function Index() {
             <p className="text-muted-foreground mt-6">
               Architetti, studi di interior design e imprese che scelgono la nostra manifattura.
             </p>
-            <div className="mt-10 flex flex-col items-center gap-3">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-accent font-display font-bold">
-                Partner ufficiale
-              </span>
-              <img src={logoXtone} alt="XTONE" className="h-5 md:h-6 w-auto" loading="lazy" />
-            </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border">
             {partners.map((p) => (
