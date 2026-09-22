@@ -1,9 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type MaterialHallItem = {
   cat: string;
   name: string;
   img: string;
+  origin?: string;
+  variation?: string;
+  finishes?: string;
+  desc?: string;
 };
 
 /**
@@ -20,6 +24,12 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
   const counterRef = useRef<HTMLDivElement>(null);
   const prevBtnRef = useRef<HTMLButtonElement>(null);
   const nextBtnRef = useRef<HTMLButtonElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const openDetailRef = useRef<(index: number) => void>(() => {});
+  const pauseRef = useRef<(ms: number) => void>(() => {});
+  const [detail, setDetail] = useState<number | null>(null);
+
+  openDetailRef.current = (index) => setDetail(index);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -49,6 +59,8 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
     let resumeTimer = 0;
     let activeIndex = -1;
     let rafId = 0;
+    let pressedIndex = -1;
+    let handledByPointer = false;
 
     const wrap = (v: number, m: number) => ((v % m) + m) % m;
     const circularDistance = (index: number, pos: number, m: number) => {
@@ -108,6 +120,8 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
       pauseTemporarily();
     }
 
+    pauseRef.current = (ms: number) => pauseTemporarily(ms);
+
     const onPrev = () => animateTo(Math.round(position) - 1);
     const onNext = () => animateTo(Math.round(position) + 1);
     prevBtn.addEventListener("click", onPrev);
@@ -115,9 +129,13 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
 
     const itemCleanups = els.map((el, i) => {
       const onClick = () => {
-        if (moved) return;
+        if (moved || handledByPointer) return;
         const d = circularDistance(i, position, n);
-        if (Math.abs(d) > 0.45) animateTo(position + d);
+        if (Math.abs(d) > 0.45) {
+          animateTo(position + d);
+          return;
+        }
+        openDetailRef.current(i);
       };
       const onFocus = () => {
         const d = circularDistance(i, position, n);
@@ -133,6 +151,8 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
 
     const onPointerDown = (e: PointerEvent) => {
       if (e.button !== undefined && e.button !== 0) return;
+      const pressed = (e.target as Element | null)?.closest(".materials-hall-item");
+      pressedIndex = pressed ? els.indexOf(pressed as HTMLButtonElement) : -1;
       dragging = true;
       moved = false;
       pointerId = e.pointerId;
@@ -161,7 +181,23 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
         // pointer capture may already be released by the browser
       }
       pointerId = null;
-      if (moved) animateTo(Math.round(position));
+      if (moved) {
+        animateTo(Math.round(position));
+      } else if (pressedIndex >= 0) {
+        // The stage captures the pointer and the cards drift, so a native
+        // click never lands reliably: resolve the tap here instead.
+        const d = circularDistance(pressedIndex, position, n);
+        if (Math.abs(d) > 0.45) {
+          animateTo(position + d);
+        } else {
+          openDetailRef.current(pressedIndex);
+        }
+        handledByPointer = true;
+        window.setTimeout(() => {
+          handledByPointer = false;
+        }, 350);
+      }
+      pressedIndex = -1;
       requestAnimationFrame(() => {
         moved = false;
       });
@@ -255,6 +291,22 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
     };
   }, [items]);
 
+  useEffect(() => {
+    if (detail === null) return;
+    pauseRef.current(600000);
+    closeBtnRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setDetail(null);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      pauseRef.current(1500);
+    };
+  }, [detail]);
+
+  const current = detail === null ? null : items[detail];
+
   return (
     <div className="materials-hall" aria-label="Galleria 3D dei materiali">
       <div className="materials-hall-head">
@@ -279,6 +331,13 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
             type="button"
             className="materials-hall-item"
             aria-label={`${m.cat} — ${m.name}`}
+            data-name={m.name}
+            data-cat={m.cat}
+            data-img={m.img}
+            data-origin={m.origin}
+            data-variation={m.variation}
+            data-finishes={m.finishes}
+            data-desc={m.desc}
           >
             <span className="materials-hall-panel">
               <img
@@ -304,7 +363,9 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
       </div>
 
       <div className="materials-hall-controls">
-        <div className="materials-hall-help">Trascina la galleria · tocca un materiale</div>
+        <div className="materials-hall-help">
+          Trascina la galleria · tocca un materiale per la scheda
+        </div>
         <div className="flex items-center gap-2">
           <button
             ref={prevBtnRef}
@@ -322,6 +383,62 @@ export function MaterialsHall({ items, kicker }: { items: MaterialHallItem[]; ki
           >
             →
           </button>
+        </div>
+      </div>
+
+      <div
+        className="materials-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-label={current ? `Scheda materiale ${current.name}` : "Scheda materiale"}
+        hidden={current === null}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) setDetail(null);
+        }}
+      >
+        <div className="materials-sheet-card">
+          <button
+            ref={closeBtnRef}
+            type="button"
+            className="materials-sheet-close"
+            aria-label="Chiudi la scheda"
+            onClick={() => setDetail(null)}
+          >
+            ×
+          </button>
+          <div className="materials-sheet-media">
+            {current && <img src={current.img} alt={`Texture ${current.name}`} />}
+          </div>
+          <div className="materials-sheet-body">
+            <span className="materials-sheet-cat">{current?.cat}</span>
+            <h3 className="materials-sheet-name">{current?.name}</h3>
+            <p className="materials-sheet-desc">{current?.desc}</p>
+            <dl className="materials-sheet-specs">
+              <div>
+                <dt>Tipologia</dt>
+                <dd>{current?.cat}</dd>
+              </div>
+              <div>
+                <dt>Provenienza</dt>
+                <dd>{current?.origin}</dd>
+              </div>
+              <div>
+                <dt>Variazione cromatica</dt>
+                <dd>{current?.variation}</dd>
+              </div>
+              <div>
+                <dt>Finiture</dt>
+                <dd>{current?.finishes}</dd>
+              </div>
+            </dl>
+            <a
+              className="materials-sheet-cta"
+              href="#form-contatti"
+              onClick={() => setDetail(null)}
+            >
+              Richiedi questo materiale
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -70,19 +70,123 @@ const partners = [
 ];
 
 const materials = [
-  { cat: "Quarzite", name: "Adamantina", img: xtAdamantina },
-  { cat: "Granito", name: "Alpinus", img: xtAlpinus },
-  { cat: "Granito", name: "Andromeda", img: xtAndromeda },
-  { cat: "Granito", name: "Baobab", img: xtBaobab },
-  { cat: "Granito", name: "Black Cosmic", img: xtBlackCosmic },
-  { cat: "Quarzite", name: "Blue Roma", img: xtBlueRoma },
-  { cat: "Quarzite", name: "Cyclone Black", img: xtCycloneBlack },
-  { cat: "Quarzite", name: "Mont Blanc", img: xtMontBlanc },
-  { cat: "Granito", name: "Pangea", img: xtPangea },
-  { cat: "Quarzite", name: "Roma Imperiale", img: xtRomaImperiale },
-  { cat: "Granito", name: "Selvaggio Green", img: xtSelvaggioGreen },
-  { cat: "Quarzite", name: "Tremor Dark", img: xtTremorDark },
-  { cat: "Granito", name: "Via Lactea", img: xtViaLactea },
+  {
+    cat: "Quarzite",
+    name: "Adamantina",
+    img: xtAdamantina,
+    origin: "America",
+    variation: "Forte · retroilluminabile",
+    finishes: "Lucida · 100284008 · G1222",
+    desc: "Venature biancastre marcate prendono forma su un fondo dai toni verdastri. L'eleganza della quarzite dona agli ambienti un'estetica inimitabile, esaltata dalla possibilità di retroilluminare la lastra.",
+  },
+  {
+    cat: "Granito",
+    name: "Alpinus",
+    img: xtAlpinus,
+    origin: "America",
+    variation: "Moderata · retroilluminabile",
+    finishes: "Lucida · 100278109 · G1209",
+    desc: "Di carattere esotico e audace, Alpinus porta la natura negli spazi con toni cremosi e una struttura venata che crea ambienti sofisticati. Le qualità del granito si esaltano quando la luce cade sulla superficie.",
+  },
+  {
+    cat: "Granito",
+    name: "Andromeda",
+    img: xtAndromeda,
+    origin: "Asia",
+    variation: "Moderata",
+    finishes: "Lucida · 100278088 · G1206",
+    desc: "La luminosità e l'irregolarità di questo granito si traducono in una superficie naturale dai toni verdastri, punteggiata da piccoli pigmenti granata. Andromeda si adatta a qualsiasi spazio grazie al suo fascino estetico.",
+  },
+  {
+    cat: "Granito",
+    name: "Baobab",
+    img: xtBaobab,
+    origin: "Africa",
+    variation: "Forte",
+    finishes: "Lucida · 100278105 · G1226",
+    desc: "La bellezza più pura raggiunge il massimo splendore grazie alle gemme blu intenso che accompagnano il disegno di Baobab. Una scelta che arricchisce l'ambiente e si intensifica con l'illuminazione della superficie.",
+  },
+  {
+    cat: "Granito",
+    name: "Black Cosmic",
+    img: xtBlackCosmic,
+    origin: "America",
+    variation: "Forte",
+    finishes: "Lucida · 100278089 · G1208 · Leather · 100305550",
+    desc: "Intenso ed esclusivo, Black Cosmic ricrea uno spettacolo astrale in cui minuziosi dettagli dorati e argentati affiorano sulla superficie naturale. La finitura lucida produce un effetto radiante di grande valore decorativo.",
+  },
+  {
+    cat: "Quarzite",
+    name: "Blue Roma",
+    img: xtBlueRoma,
+    origin: "America",
+    variation: "Forte",
+    finishes: "Lucida · 100278086 · G1213 · Honed · 100285062",
+    desc: "Dall'aspetto avvolgente, esalta il contrasto cromatico tra l'azzurro grigio della pietra e le venature ramate della sua struttura scenografica. La quarzite blu diventa il punto focale della stanza.",
+  },
+  {
+    cat: "Quarzite",
+    name: "Cyclone Black",
+    img: xtCycloneBlack,
+    origin: "America",
+    variation: "Forte",
+    finishes: "Lucida · 100317208 · G1218 · Leather · 100317198",
+    desc: "Di forte personalità, Cyclone sorprende con un fondo scuro attraversato da infinite venature incrociate che emulano un cielo in tempesta, in un contrasto netto tra bianco e nero. Un aspetto uniforme che dona distinzione ed esclusività.",
+  },
+  {
+    cat: "Quarzite",
+    name: "Mont Blanc",
+    img: xtMontBlanc,
+    origin: "America",
+    variation: "Lieve",
+    finishes: "Lucida · 100267161 · G1214 · Honed · 100278112",
+    desc: "Mont Blanc rende omaggio alla quarzite bianca senza tempo con una palette che combina toni beige, nude e tortora. Il fondo bianco avorio e le sue venature richiamano la bellezza del paesaggio alpino.",
+  },
+  {
+    cat: "Granito",
+    name: "Pangea",
+    img: xtPangea,
+    origin: "America",
+    variation: "Forte · retroilluminabile",
+    finishes: "Lucida · 100278103 · G1224",
+    desc: "Dall'estetica di grande impatto, Pangea presenta l'unione di quarzo e feldspato dando vita a un'autentica esplosione cristallina. Valorizzabile con la retroilluminazione, è una delle collezioni più esclusive per l'interior design.",
+  },
+  {
+    cat: "Quarzite",
+    name: "Roma Imperiale",
+    img: xtRomaImperiale,
+    origin: "America",
+    variation: "Forte",
+    finishes: "Lucida · 100278108 · G1213 · Honed · 100305552",
+    desc: "Bellezza incomparabile ed eleganza innata: Roma Imperiale è la sintesi tra l'armonia del suo cromatismo e la complessità della struttura venata. Toni beige e sfumature terrose per spazi di grande personalità.",
+  },
+  {
+    cat: "Granito",
+    name: "Selvaggio Green",
+    img: xtSelvaggioGreen,
+    origin: "America",
+    variation: "Forte",
+    finishes: "Lucida · 100304425 · G1213 · Leather · 100304424",
+    desc: "Selvaggio Green è una delle pietre naturali più sorprendenti della selezione Altissima. Si distingue per le ampie linee nere che attraversano il fondo verde scuro, dando allo spazio un carattere inconfondibile.",
+  },
+  {
+    cat: "Quarzite",
+    name: "Tremor Dark",
+    img: xtTremorDark,
+    origin: "America",
+    variation: "Forte",
+    finishes: "Lucida · 100317006 · G1215 · Leather · 100316999",
+    desc: "Scuro, audace ed elegante: Tremor veste gli spazi di complessità e bellezza. Le onde morbide disegnate sulla superficie mostrano venature ambra, grigio e bianco che ricordano i corsi d'acqua cristallini dentro la montagna.",
+  },
+  {
+    cat: "Granito",
+    name: "Via Lactea",
+    img: xtViaLactea,
+    origin: "America",
+    variation: "Lieve",
+    finishes: "Lucida · 100266527 · G1233",
+    desc: "Sottigliezza, eleganza e delicatezza caratterizzano questo granito. Il nero intenso della superficie, attraversato da venature lineari dai colori tenui, crea spazi di grande personalità.",
+  },
 ];
 
 function Index() {
@@ -183,9 +287,6 @@ function Index() {
             <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter uppercase">
               Alcuni dei nostri partner
             </h2>
-            <p className="text-muted-foreground mt-6">
-              Architetti, studi di interior design e imprese che scelgono la nostra manifattura.
-            </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border">
             {partners.map((p) => (
