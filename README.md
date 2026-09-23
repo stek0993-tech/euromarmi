@@ -30,3 +30,11 @@ Basta caricare il contenuto di `dist/client/` sulla root del dominio
 sull'hosting (es. via FTP), insieme a `contact.php` (il form di contatto in
 `src/routes/index.tsx` invia i dati a `contact.php`, che va quindi copiato
 accanto a `index.html`).
+
+## Versione HTML/CSS/JS puro (`sito/`)
+
+La cartella `sito/` contiene lo stesso sito senza React né build: una pagina
+`.html` per sezione, `css/style.css`, `js/main.js` (la sala materiali 3D) e
+le immagini in `img/`, più `contact.php`. Si apre con doppio clic da locale e
+si carica così com'è via FTP. È una copia indipendente: le modifiche fatte in
+`src/` non si riflettono in `sito/` e viceversa.
